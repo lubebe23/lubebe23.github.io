@@ -126,6 +126,20 @@ body {
   box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
 }
 
+
+#projects .card {
+  margin-bottom: 40px;
+  padding: 25px;
+  border-radius: 8px;
+  background: #1e293b;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+#projects .card:hover {
+  transform: translateY(-5px);
+}
+
     footer {
       text-align: center;
       padding: 30px;
