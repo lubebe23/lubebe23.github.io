@@ -1,10 +1,201 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title> Lewis Ubebe</title>
-  </head>
-  <body>
-    <h1>My Portfolio</h1>
-    <h2>My Name is Lewis Ubebe and this portfolio holds all my most recent projects</h2>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Name | Cybersecurity & IT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #0a0f1f);
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 10%;
+      background: rgba(15, 23, 42, 0.9);
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      color: #38bdf8;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #38bdf8;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      color: #cbd5e1;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 25px;
+      background: #38bdf8;
+      color: #0f172a;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      background: #0ea5e9;
+    }
+
+    section {
+      padding: 60px 10%;
+    }
+
+    h2 {
+      color: #38bdf8;
+      margin-bottom: 20px;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #0f172a;
+      color: #94a3b8;
+    }
+
+    footer a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <div><strong>Lewis Ubebe</strong></div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header>
+  <h1>Cybersecurity Student & IT Engineer</h1>
+  <p>
+    I'm a 3rd year Computer Science student at the University of Limerick,
+    currently working part-time as an IT Engineer. I’m passionate about
+    cybersecurity, infrastructure, and building systems that are secure,
+    reliable, and efficient.
+  </p>
+  <a href="https://github.com/lubebe23" class="button">View My GitHub</a>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    I enjoy understanding how systems work under the hood and more importantly,
+    how they break. Through university and hands-on IT work, I've developed
+    practical experience in networking, system administration, troubleshooting,
+    and security fundamentals.
+  </p>
+  <p>
+    My current interests include penetration testing, network security,
+    vulnerability research, and secure infrastructure design.
+  </p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="card-container">
+    <div class="card">
+      <h3>Home Cybersecurity Lab</h3>
+      <p>
+        Built a virtual lab environment using Kali Linux, Windows, and vulnerable
+        machines to practice exploitation, packet analysis, and vulnerability scanning.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Python Port Scanner</h3>
+      <p>
+        Developed a multithreaded port scanner in Python to understand network
+        services, sockets, and enumeration techniques.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Log Analysis Tool</h3>
+      <p>
+        Created a script to parse and analyze system logs for suspicious activity,
+        simulating entry-level SOC analyst tasks.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Professional Experience</h2>
+  <div class="card">
+    <h3>IT Engineer</h3>
+    <p>
+      Provide technical support, manage user accounts, troubleshoot network
+      issues, assist with hardware deployments, and support infrastructure
+      maintenance. Experience working with Active Directory, networking
+      fundamentals, and endpoint management.
+    </p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: lewisubebe.com</p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/lewis-ubebe-929141280/">Your LinkedIn Profile</a></p>
+  <p>GitHub: <a href="https://github.com/lubebe23">github.com/yourusername</a></p>
+</section>
+
+<footer>
+  © 2026 Lewis Ubebe | Built with HTML & CSS | Designed and secured by me.
+</footer>
+
+</body>
 </html>
