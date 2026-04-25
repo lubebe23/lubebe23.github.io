@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lewis Ubebe | Certifications</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Simple certification grid */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .cert-card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid #334155;
+      text-decoration: none;
+      display: block;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border-color: #38bdf8;
+    }
+
+    .cert-logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .cert-card h3 {
+      color: #38bdf8;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .cert-card p {
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+
+    .cert-date {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 10px;
+    }
+
+    .filter-section {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 30px 0 20px;
+    }
+
+    .filter-btn {
+      background: #1e293b;
+      border: 1px solid #334155;
+      padding: 8px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #cbd5e1;
+      font-size: 0.9rem;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: #38bdf8;
+      border-color: #38bdf8;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div><strong>Lewis Ubebe</strong></div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="accreditions.html" style="border-bottom: 2px solid #38bdf8;">Certifications</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<header>
+  <h1>📜 My Certifications</h1>
+  <p>Click any badge to view my verified certificate</p>
+</header>
+
+<section id="certifications">
+  <div class="filter-section">
+    <button data-filter="all" class="filter-btn active">All</button>
+    <button data-filter="security" class="filter-btn">🔐 Security</button>
+    <button data-filter="networking" class="filter-btn">🌐 Networking</button>
+    <button data-filter="fundamentals" class="filter-btn">💻 Fundamentals</button>
+  </div>
+
+  <div class="cert-grid" id="certGrid"></div>
+</section>
+
+<footer>
+  © 2026 Lewis Ubebe | Built with HTML & CSS | All certifications verifiable on request
+</footer>
+
+<script>
+  // Your certifications - Replace the certificateLink URLs with your actual Udemy/Credly certificate links
+  const certifications = [
+    {
+      name: "CompTIA Security+",
+      issuer: "CompTIA",
+      logo: "https://images.credly.com/images/424c5e3c-6624-4fbd-984c-acebe03b220c/CompTIA_Security_2B.png",
+      certificateLink: "https://www.credly.com/badges/your-security-plus-badge", // Replace with your actual link
+      category: "security",
+      date: "2025"
+    },
+    {
+      name: "CompTIA Network+",
+      issuer: "Udemy",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/CompTIA_Network%2B_Logo.svg/1200px-CompTIA_Network%2B_Logo.svg.png",
+      certificateLink: "https://www.udemy.com/certificate/your-network-plus-certificate/", // Replace with your actual Udemy cert link
+      category: "networking",
+      date: "2025"
+    },
+    {
+      name: "CompTIA A+",
+      issuer: "Udemy",
+      logo: "https://images.credly.com/images/9f0ba4ea-6e8f-4ee2-88dc-f5b4e568b629/CompTIA_A_2B.png",
+      certificateLink: "https://www.udemy.com/certificate/your-a-plus-certificate/", // Replace with your actual Udemy cert link
+      category: "fundamentals",
+      date: "2025"
+    },
+    {
+      name: "CompTIA IT Fundamentals (ITF+)",
+      issuer: "Udemy",
+      logo: "https://images.credly.com/images/1d0018ea-5639-427c-a804-fa7c2843a2c7/CompTIA_ITF_2B.png",
+      certificateLink: "https://www.udemy.com/certificate/your-itf-certificate/", // Replace with your actual Udemy cert link
+      category: "fundamentals",
+      date: "2025"
+    }
+  ];
+
+  let activeFilter = "all";
+
+  function renderCerts() {
+    const grid = document.getElementById('certGrid');
+    const filtered = activeFilter === "all" 
+      ? certifications 
+      : certifications.filter(cert => cert.category === activeFilter);
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `<div style="text-align:center; padding:60px; color:#94a3b8;">No certifications in this category yet 🔜</div>`;
+      return;
+    }
+
+    grid.innerHTML = filtered.map(cert => `
+      <a href="${cert.certificateLink}" target="_blank" class="cert-card" rel="noopener noreferrer">
+        <img src="${cert.logo}" alt="${cert.name} logo" class="cert-logo" 
+             onerror="this.src='https://via.placeholder.com/100x100?text=${encodeURIComponent(cert.name)}'">
+        <h3>${cert.name}</h3>
+        <p>${cert.issuer}</p>
+        <div class="cert-date"> ${cert.date}</div>
+      </a>
+    `).join('');
+  }
+
+  // Filter functionality
+  const buttons = document.querySelectorAll('.filter-btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeFilter = btn.getAttribute('data-filter');
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderCerts();
+    });
+  });
+
+  renderCerts();
+</script>
+
+</body>
+</html>
