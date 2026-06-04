@@ -178,8 +178,8 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 1.2rem;
-      font-size: 2.5rem;
-      font-weight: 600;
+      font-size: 1.8rem;
+      font-weight: 700;
       color: #38bdf8;
       border: 1px solid #475569;
       font-family: monospace;
@@ -280,72 +280,67 @@
 </footer>
 
 <script>
-  // CERTIFICATION DATABASE - UPDATED WITH AWS CERTIFIED CLOUD PRACTITIONER
+  // CERTIFICATION DATABASE - USING LOCAL IMAGES FROM "images" FOLDER
   // All certificate links and details are accurate
   const certifications = [
     {
       name: "AWS Certified Cloud Practitioner",
       issuer: "Amazon Web Services (AWS)",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1200px-Amazon_Web_Services_Logo.svg.png",
+      logoPath: "images/aws.png",
       certificateLink: "https://cp.certmetrics.com/amazon/en/public/verify/credential/4edf4440a4e74e93982847bf38fc31f8",
       category: "cloud",
-      date: "2026",
-      abbreviation: "AWS"
+      date: "2026"
     },
     {
       name: "CompTIA Security+",
       issuer: "CompTIA",
-      logoUrl: "https://images.credly.com/size/340x340/images/74790a75-8451-4a9e-9fdd-90c1934d05ef/CompTIA_Security_2B.png",
+      logoPath: "images/security+.png",
       certificateLink: "https://cp.certmetrics.com/comptia/en/public/verify/credential/466d3100a958480ebbf5283c26f72551",
       category: "security",
-      date: "2026",
-      abbreviation: "SEC+"
+      date: "2026"
     },
     {
       name: "CompTIA Network+",
       issuer: "Udemy",
-      logoUrl: "https://cdn.worldvectorlogo.com/logos/udemy-2.svg",
+      logoPath: "images/udemy.jpg",
       certificateLink: "https://www.udemy.com/certificate/UC-9128ac5d-1cac-4cfa-8a6b-628b808051a3/",
       category: "networking",
-      date: "2025",
-      abbreviation: "NET+"
+      date: "2025"
     },
     {
       name: "CompTIA A+",
       issuer: "Udemy",
-      logoUrl: "https://cdn.worldvectorlogo.com/logos/udemy-2.svg",
+      logoPath: "images/udemy.jpg",
       certificateLink: "https://www.udemy.com/certificate/UC-82d5c798-7745-4b7d-a7bc-cd910c9a494e/",
       category: "fundamentals",
-      date: "2025",
-      abbreviation: "A+"
+      date: "2025"
     },
     {
       name: "CompTIA IT Fundamentals (ITF+)",
       issuer: "Udemy",
-      logoUrl: "https://cdn.worldvectorlogo.com/logos/udemy-2.svg",
+      logoPath: "images/udemy.jpg",
       certificateLink: "https://www.udemy.com/certificate/UC-c70bf2b2-fda2-4faa-9103-f571444abaa5/",
       category: "fundamentals",
-      date: "2024",
-      abbreviation: "ITF+"
+      date: "2024"
     }
   ];
 
   let activeFilter = "all";
 
   // Helper: Creates a consistent fallback element when an image fails to load
-  function createFallbackElement(certName, abbreviation) {
+  function createFallbackElement(certName) {
     const fallbackDiv = document.createElement('div');
     fallbackDiv.className = 'cert-logo-fallback';
-    // Extract first letters or display abbreviation
+    // Display text based on certification name
     let displayText = '';
     if (certName.includes('AWS')) displayText = 'AWS';
     else if (certName.includes('Security+')) displayText = 'SEC+';
     else if (certName.includes('Network+')) displayText = 'NET+';
     else if (certName.includes('A+')) displayText = 'A+';
     else if (certName.includes('IT Fundamentals')) displayText = 'ITF+';
-    else displayText = abbreviation || certName.substring(0, 3).toUpperCase();
+    else displayText = certName.substring(0, 3).toUpperCase();
     fallbackDiv.textContent = displayText;
-    fallbackDiv.style.fontSize = '2rem';
+    fallbackDiv.style.fontSize = '1.8rem';
     fallbackDiv.style.fontWeight = '700';
     fallbackDiv.style.fontFamily = "'Inter', monospace";
     return fallbackDiv;
@@ -375,18 +370,19 @@
       cardLink.rel = 'noopener noreferrer';
       cardLink.className = 'cert-card';
 
-      // Create logo container (img with fallback)
+      // Create logo image with local path
       const img = document.createElement('img');
-      img.src = cert.logoUrl;
+      img.src = cert.logoPath;
       img.alt = `${cert.name} logo`;
       img.className = 'cert-logo';
       img.loading = 'lazy';
       
       // Handle image error: replace with custom fallback div
       img.onerror = function() {
-        // Prevent infinite loop
-        if (img.parentNode) {
-          const fallbackElem = createFallbackElement(cert.name, cert.abbreviation);
+        // Prevent infinite loop and ensure we only replace once
+        if (img.parentNode && !img.dataset.fallbackApplied) {
+          img.dataset.fallbackApplied = 'true';
+          const fallbackElem = createFallbackElement(cert.name);
           img.replaceWith(fallbackElem);
         }
       };
